@@ -7,7 +7,16 @@ import axios from "axios";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Page = ({ params }: { params: any }) => {
-	const [data, setData] = useState(null);
+	interface Blog {
+		date: string;
+		category: string;
+		title: string;
+		image: string;
+		imageAlt: string;
+		description: string;
+	}
+
+	const [data, setData] = useState<Blog | null>(null);
 
 	const fetchBlogData = async () => {
 		const response = await axios.get("/api/blog", {
@@ -40,7 +49,6 @@ const Page = ({ params }: { params: any }) => {
 												<span className="font-semibold text-gray-800 dark:text-neutral-200">admin</span>
 											</div>
 										</div>
-										{/* End Tooltip */}
 										<ul className="text-xs text-gray-500 dark:text-neutral-500">
 											<li className="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">{data.date}</li>
 											<li className="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">{data.category}</li>

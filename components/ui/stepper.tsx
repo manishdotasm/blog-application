@@ -5,8 +5,11 @@ import { useState } from "react";
 const AuthSteps = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [message, setMessage] = useState("");
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (e: { preventDefault: () => void }) => {
+		e.preventDefault(); // Prevent the default form submission
+
 		const response = await fetch("/api/validate", {
 			method: "POST",
 			headers: {
@@ -17,11 +20,14 @@ const AuthSteps = () => {
 
 		if (response.ok) {
 			// Successful login, redirect to admin controls
-			window.location.href = "/admin-controls";
+			setMessage("Login successful! Redirecting...");
+			setTimeout(() => {
+				window.location.href = "/admin-controls";
+			}, 2000); // Redirect after 2 seconds to allow the message to be seen
 		} else {
 			// Handle error
 			const errorText = await response.text();
-			alert(errorText || "Login failed");
+			setMessage(errorText || "Login failed");
 		}
 	};
 
