@@ -1,7 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const AuthSteps = () => {
 	const [username, setUsername] = useState("");
