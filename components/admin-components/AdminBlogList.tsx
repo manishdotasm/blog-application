@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const AdminBlogList = () => {
-	const [blogs, setBlogs] = useState([]);
+	const [blogs, setBlogs] = useState<any>([]);
 
 	const fetchBlogs = async () => {
 		const response = await axios.get("/api/blog");
@@ -50,7 +50,7 @@ const AdminBlogList = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{blogs.map((item, index) => {
+						{blogs.map((item: { _id: any; title: any; date: any }, index: React.Key | null | undefined) => {
 							return <BlogListItem key={index} mongoID={item._id} title={item.title} date={item.date} deleteBlog={deleteBlog} />;
 						})}
 					</tbody>
