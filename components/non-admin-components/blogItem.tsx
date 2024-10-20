@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const BlogItem = ({ id, title, description, category, image, imageAlt, date }: { id: number; title: string; description: string; category: string; image: any; imageAlt: string; date: string }) => {
+const BlogItem = ({ id, title, description, category, image, imageAlt, date }: { id: string; title: string; description: string; category: string; image: any; imageAlt: string; date: string }) => {
 	return (
 		<Link className="group flex flex-col border border-gray-200 h-auto hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5 dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40 dark:focus:border-transparent dark:focus:shadow-black/40" href={"/blogs/" + id}>
 			<div className="relative aspect-w-16 aspect-h-11">

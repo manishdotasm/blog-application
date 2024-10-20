@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
-
 import { Button } from "../ui/button";
 import { BriefcaseIcon, Building, FlowerIcon, HeartIcon, LightbulbIcon, MountainSnow, SettingsIcon } from "lucide-react";
 import axios from "axios";
 import BlogItem from "./blogItem";
+
+interface Blog {
+	_id: string;
+	title: string;
+	description: string;
+	category: string;
+	image: string;
+	imageAlt: string;
+	date: string;
+}
 
 interface BlogListProps {
 	searchTerm: string;
@@ -13,7 +22,7 @@ const BlogList: React.FC<BlogListProps> = ({ searchTerm }) => {
 	const [clicked, setClicked] = useState("All");
 	const clickedCSS = "bg-black text-white";
 
-	const [blogs, setBlogs] = useState([]);
+	const [blogs, setBlogs] = useState<Blog[]>([]); // Specify the type of blogs
 
 	const fetchBlogs = async () => {
 		try {
@@ -64,8 +73,8 @@ const BlogList: React.FC<BlogListProps> = ({ searchTerm }) => {
 				{blogs
 					.filter((item) => (clicked === "All" ? true : item.category === clicked))
 					.filter((blog) => blog.title.toLowerCase().includes(searchTerm.toLowerCase()) || blog.description.toLowerCase().includes(searchTerm.toLowerCase()))
-					.map((blog, index) => (
-						<BlogItem key={index} id={blog._id} title={blog.title} description={blog.description} category={blog.category} image={`/${blog.image}`} imageAlt={blog.imageAlt} date={blog.date} />
+					.map((blog) => (
+						<BlogItem key={blog._id} id={blog._id} title={blog.title} description={blog.description} category={blog.category} image={`/${blog.image}`} imageAlt={blog.imageAlt} date={blog.date} />
 					))}
 			</div>
 		</div>
