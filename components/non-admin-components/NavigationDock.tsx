@@ -45,13 +45,13 @@ const NavigationDock = () => {
 					<DropdownMenuContent className="w-56">
 						<DropdownMenuLabel>Socials</DropdownMenuLabel>
 						<DropdownMenuSeparator />
-						<Link href="">
+						<Link href="https://github.com/manishdotasm">
 							<DropdownMenuItem>
 								<Github className="mr-2 h-4 w-4" />
 								<span> Github </span>
 							</DropdownMenuItem>
 						</Link>
-						<Link href="#">
+						<Link href="https://www.instagram.com/manishdotasm/">
 							<DropdownMenuItem>
 								<Instagram className="mr-2 h-4 w-4" />
 								<span>Instagram</span>
