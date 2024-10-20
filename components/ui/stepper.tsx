@@ -5,7 +5,6 @@ import { useState } from "react";
 const AuthSteps = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [message, setMessage] = useState("");
 
 	const handleSubmit = async () => {
 		const response = await fetch("/api/validate", {
